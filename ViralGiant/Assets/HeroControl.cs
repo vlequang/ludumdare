@@ -33,4 +33,5 @@ public class HeroControl : MonoBehaviour, IGoal {
 	public bool AtDestination() {
 		return Vector3.SqrMagnitude (destination - this.transform.position) < 0.001;
 	}
+
 }
