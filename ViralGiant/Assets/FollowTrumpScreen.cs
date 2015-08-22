@@ -7,6 +7,10 @@ public class FollowTrumpScreen : MonoBehaviour {
 	private Vector3 destination;
 	private bool destinationSet;
 
+	void Start() {
+		trump = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
+	}
+
 	public void SetFocusPoint(Vector3 point) {
 		point = Camera.main.WorldToScreenPoint (point);
 		destination = Camera.main.WorldToScreenPoint(this.transform.position);

@@ -11,6 +11,7 @@ public class RuwawayFromTrump : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
+		trump = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
 
 	}
 
