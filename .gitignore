@@ -10,3 +10,5 @@ ViralGiant/ViralGiant-csharp.sln
 ViralGiant/Assembly-CSharp-vs.csproj
 
 ViralGiant/Assembly-CSharp.csproj
+
+*.sln
