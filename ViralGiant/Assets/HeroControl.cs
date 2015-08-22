@@ -17,11 +17,12 @@ public class HeroControl : MonoBehaviour, IGoal {
 
 	// Update is called once per frame
 	void Update () {
-		moveDirection.Set (0, Input.GetAxis("Vertical"), 0);
+		moveDirection.Set (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        //moveDirection.Set (0, Input.GetAxis("Vertical"), 0);
 		moveDirection = transform.TransformDirection(moveDirection);
 		moveDirection *= speed;
 
-		rigidBody.MoveRotation (- Input.GetAxis("Horizontal") * angle);
+//		rigidBody.MoveRotation (- Input.GetAxis("Horizontal") * angle);
 		rigidBody.AddForce(moveDirection * Time.deltaTime * 500.0f);
 	}
 
