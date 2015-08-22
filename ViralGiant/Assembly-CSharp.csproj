@@ -49,6 +49,7 @@
      <Compile Include="Assets\FollowTrumpScreen.cs" />
      <Compile Include="Assets\HeroControl.cs" />
      <Compile Include="Assets\IGoal.cs" />
+     <Compile Include="Assets\RuwawayFromTrump.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
