@@ -12,7 +12,7 @@ public class FollowTrumpScreen : MonoBehaviour {
 	private Rigidbody2D rigidBody;
 
 	void Start() {
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
+		player = GameObject.FindGameObjectWithTag ("Virus").GetComponent<Transform>();
 		rigidBody = GetComponent<Rigidbody2D> ();
 	}
 
@@ -40,7 +40,8 @@ public class FollowTrumpScreen : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (player.position);
+		GameObject[] players = GameObject.FindGameObjectsWithTag ("Virus");
+		Debug.Log (players.Length);
 
 		destination = player.position;
 		targetRotation = player.rotation;
