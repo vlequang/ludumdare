@@ -31,6 +31,13 @@ public class HeroControl : MonoBehaviour, IGoal {
 		if (other.tag == "Bullet") {
 			this.death = 300;
 			Destroy (other);
+
+			Follower[] followers = GameObject.FindObjectsOfType<Follower> ();
+			for (int i=0 ; i<followers.Length; i++) {
+				if(followers[i].found) {
+					followers[i].death = 300;
+				}
+			}
 		}
 		Debug.Log (other);
 		//		Destroy(gameObject);
