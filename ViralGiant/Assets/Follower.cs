@@ -9,6 +9,7 @@ public class Follower : MonoBehaviour {
 	public float trumpTooClose;
 	public float followSpeed;
 	public bool found;
+	public Vector3 offset;
 
 	void Start() {
 		trump = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
@@ -22,13 +23,17 @@ public class Follower : MonoBehaviour {
 	void Update () {
 		if (found) {
 			{
-				float distance = Vector3.Distance (trump.position, this.transform.position);
+				Vector3 destination = trump.position + offset;
+
+				float distance = Vector3.Distance (destination, this.transform.position);
 				if (distance > trumpTooFar) {
-					Vector3 attract = trump.position - this.transform.position;
+					Vector3 attract = destination - this.transform.position;
 					rigidBody.AddRelativeForce (attract * Time.deltaTime * followSpeed);
 				} else if (distance < trumpTooClose) {
 					Vector3 repel = this.transform.position - trump.position;
-					rigidBody.AddRelativeForce (repel * Time.deltaTime * followSpeed);
+					rigidBody.AddRelativeForce (repel * Time.deltaTime * followSpeed*3);
+				} else {
+					offset = Random.insideUnitCircle * Vector3.Distance (trump.position, this.transform.position);;
 				}
 			}
 
