@@ -12,6 +12,7 @@ public class RuwawayFromTrump : MonoBehaviour {
 	public int death = 0;
 	private Vector2 orgPosition;
 	private AudioSource firedAudio;
+	private AudioSource loserAudio;
 
 
 	// Use this for initialization
@@ -20,6 +21,7 @@ public class RuwawayFromTrump : MonoBehaviour {
 		trump = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
 		orgPosition = rigidBody.position;
 		firedAudio = GetComponents<AudioSource> ()[0];
+		loserAudio = GetComponents<AudioSource> () [1];
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
@@ -32,6 +34,8 @@ public class RuwawayFromTrump : MonoBehaviour {
 			this.GetComponent<Explosion>().Explode();
 			if (other.tag == "Player") {
 				firedAudio.Play();
+			} else {
+				loserAudio.Play ();
 			}
 		}
 //		Debug.Log (other);
