@@ -22,7 +22,7 @@ public class RuwawayFromTrump : MonoBehaviour {
 			Vector3 repel = this.transform.position - trump.position;
 			repel.Normalize ();
 			rigidBody.AddRelativeForce(repel * Time.deltaTime * repelDistance);
-			Debug.Log ("I see trump!");
+			//Debug.Log ("I see trump!");
 		} else {
 
 		}
