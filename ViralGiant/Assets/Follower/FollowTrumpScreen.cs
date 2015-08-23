@@ -40,9 +40,6 @@ public class FollowTrumpScreen : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		GameObject[] players = GameObject.FindGameObjectsWithTag ("Virus");
-		Debug.Log (players.Length);
-
 		destination = player.position;
 		targetRotation = player.rotation;
 
