@@ -8,7 +8,7 @@ public class FollowTrumpScreen : MonoBehaviour {
 	private Quaternion targetRotation;
 	private bool destinationSet;
 	public float speed = 10;
-	public float rotationSpeed = 10;
+	public float rotationSpeed = 0.5F;
 	private Rigidbody2D rigidBody;
 
 	void Start() {
@@ -59,7 +59,11 @@ public class FollowTrumpScreen : MonoBehaviour {
 			angleDiff += 180;
 		}
 		//Debug.Log (rigidBody.inertia);
-		rigidBody.AddTorque (angleDiff * Time.deltaTime * 0.5F);
+		float rotSpeed = rotationSpeed;
+		if (angleDiff > 90 || angleDiff < -90) {
+			rotSpeed *= 100;
+		}
+		rigidBody.AddTorque (angleDiff * Time.deltaTime * rotationSpeed);
 
 
 //		Quaternion angleDiff = Quaternion.RotateTowards(transform.rotation, targetRotation, .1F);
