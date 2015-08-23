@@ -13,7 +13,7 @@ public class SelfDestruct : MonoBehaviour {
 	void Update () {
 		if (animator.GetCurrentAnimatorStateInfo (0).normalizedTime > 1) {
 			this.GetComponent<Renderer>().enabled = false;
-			Destroy (this);
+			GameObject.DestroyObject(this.gameObject,3);
 		}
 	}
 }
