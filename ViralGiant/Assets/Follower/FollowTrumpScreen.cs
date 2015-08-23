@@ -58,7 +58,7 @@ public class FollowTrumpScreen : MonoBehaviour {
 		} else if (angleDiff < -180) {
 			angleDiff += 180;
 		}
-		Debug.Log (rigidBody.inertia);
+		//Debug.Log (rigidBody.inertia);
 		rigidBody.AddTorque (angleDiff * Time.deltaTime * 0.5F);
 
 
@@ -68,8 +68,8 @@ public class FollowTrumpScreen : MonoBehaviour {
 //		angleDiff.ToAngleAxis (out angle, out axis);
 //		Debug.Log (angle);
 		//rigidBody.AddTorque (rigidBody.inertia * angle * 0.1F);
-		
-		
+
+
 		//		if (trump != null && !destinationSet) {
 //			SetFocusPoint (trump.position);
 //		} else {

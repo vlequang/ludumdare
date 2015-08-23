@@ -20,25 +20,28 @@ public class RuwawayFromTrump : MonoBehaviour {
 		orgPosition = rigidBody.position;
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
+	void OnCollisionEnter2D(Collision2D collision) {
+		Collider2D other = collision.collider;
 		if (this.death>0) {
 			return;
 		}
 		if (other.tag == "Player" || other.tag == "Follower") {
 			this.death = 300;
+			this.GetComponent<Explosion>().Explode();
 		}
-		Debug.Log (other);
+//		Debug.Log (other);
 		//		Destroy(gameObject);
 	}
 
 
 	void FixedUpdate() {
 		if (death > 0) {
-			Debug.Log (death);
+			//Debug.Log (death);
 			this.GetComponent<Renderer>().enabled = false;
 			death--;
 			if (death == 0) {
 				this.GetComponent<Renderer>().enabled = true;
+				this.GetComponent<Explosion>().Explode();
 				rigidBody.MovePosition(orgPosition);
 			}
 			return;

@@ -38,8 +38,10 @@ public class HeroControl : MonoBehaviour, IGoal {
 					followers[i].death = 300;
 				}
 			}
+
+			GetComponent<Explosion>().Explode();
 		}
-		Debug.Log (other);
+		//Debug.Log (other);
 		//		Destroy(gameObject);
 	}
 
@@ -51,7 +53,7 @@ public class HeroControl : MonoBehaviour, IGoal {
 			return;
 		}
 		if (death > 0) {
-			Debug.Log (death);
+			//Debug.Log (death);
 			this.GetComponent<Renderer>().enabled = false;
 			death--;
 			if (death == 0) {
@@ -65,7 +67,7 @@ public class HeroControl : MonoBehaviour, IGoal {
 
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (death + ", " + born);
+		//Debug.Log (death + ", " + born);
 		if (death > 0) {
 			return;
 		}

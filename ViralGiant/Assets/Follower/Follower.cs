@@ -29,16 +29,17 @@ public class Follower : MonoBehaviour {
 		if (other.tag == "Bullet") {
 			this.death = 300;
 			found = false;
+			this.GetComponent<Explosion>().Explode();
 			Destroy (other);
 		}
-		Debug.Log (other);
+		//Debug.Log (other);
 		//		Destroy(gameObject);
 	}
 
 
 	void FixedUpdate() {
 		if (death > 0) {
-			Debug.Log (death);
+			//Debug.Log (death);
 			this.GetComponent<Renderer>().enabled = false;
 			death--;
 			if (death == 0) {
