@@ -31,6 +31,7 @@ public class Follower : MonoBehaviour {
 			found = false;
 			this.GetComponent<Explosion>().Explode();
 			Destroy (other);
+			this.GetComponents<AudioSource>()[1].Play ();
 		}
 		//Debug.Log (other);
 		//		Destroy(gameObject);
@@ -87,6 +88,7 @@ public class Follower : MonoBehaviour {
 			float distance = Vector3.Distance (trump.position, this.transform.position);
 			if (distance < 10) {
 				found = true;
+				this.GetComponents<AudioSource>()[0].Play ();
 			}
             rigidBody.AddRelativeForce (Random.insideUnitCircle * 30);
 		}
