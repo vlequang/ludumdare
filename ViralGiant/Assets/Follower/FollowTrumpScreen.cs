@@ -40,6 +40,8 @@ public class FollowTrumpScreen : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (player.position);
+
 		destination = player.position;
 		targetRotation = player.rotation;
 

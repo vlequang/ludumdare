@@ -12,6 +12,7 @@ public class HeroControl : MonoBehaviour, IGoal {
 	public int death = 0;
 	private Vector2 orgPosition;
 	public int born = 0;
+	Animator animator;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,8 @@ public class HeroControl : MonoBehaviour, IGoal {
 		}
 		orgPosition = rigidBody.position;
 		born = 100;
+
+		animator = GetComponent<Animator>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -82,6 +85,14 @@ public class HeroControl : MonoBehaviour, IGoal {
 		moveDirection *= speed;
 
 		rigidBody.AddForce(moveDirection * Time.deltaTime * 500.0f);
+
+		if (animator) {
+			if (animator.GetBool("Swimming") == false && (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0)) {
+				animator.SetBool("Swimming", true);
+			} else if (animator.GetBool("Swimming") && Input.GetAxis ("Horizontal") == 0 && Input.GetAxis ("Vertical") == 0) {
+				animator.SetBool("Swimming", false);
+			}
+		}
 	}
 
 	public Vector3 destination {
