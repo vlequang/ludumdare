@@ -19,7 +19,7 @@ public class RuwawayFromTrump : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		trump = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
 		orgPosition = rigidBody.position;
-		firedAudio = GetComponent<AudioSource> ();
+		firedAudio = GetComponents<AudioSource> ()[0];
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
