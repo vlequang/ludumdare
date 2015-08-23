@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/HeroControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/RuwawayFromTrump.cs">
     <Files>
-      <File FileName="Assets/HeroControl.cs" Line="24" Column="29" />
-      <File FileName="Assets/FollowTrumpScreen.cs" Line="7" Column="1" />
-      <File FileName="Assets/RuwawayFromTrump.cs" Line="24" Column="31" />
+      <File FileName="Assets/HeroControl.cs" Line="18" Column="35" />
+      <File FileName="Assets/FollowTrumpScreen.cs" Line="11" Column="54" />
+      <File FileName="Assets/RuwawayFromTrump.cs" Line="38" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
