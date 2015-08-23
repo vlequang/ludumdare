@@ -10,6 +10,8 @@ public class Follower : MonoBehaviour {
 	public float followSpeed;
 	public bool found;
 	public Vector3 offset;
+	public int death = 0;
+	private Vector2 orgPosition;
 
 	void Start() {
 		trump = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
@@ -17,10 +19,42 @@ public class Follower : MonoBehaviour {
 		trumpTooFar += Random.Range (-.5f, .5f);
 		trumpTooClose += Random.Range (-.5f, .5f);
 		followSpeed += Random.Range (-200f, 200f);
+		orgPosition = rigidBody.position;
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (this.death>0) {
+			return;
+		}
+		if (other.tag == "Bullet") {
+			this.death = 300;
+			found = false;
+			Destroy (other);
+		}
+		Debug.Log (other);
+		//		Destroy(gameObject);
+	}
+
+
+	void FixedUpdate() {
+		if (death > 0) {
+			Debug.Log (death);
+			this.GetComponent<Renderer>().enabled = false;
+			death--;
+			if (death == 0) {
+				this.GetComponent<Renderer>().enabled = true;
+				rigidBody.MovePosition(orgPosition);
+			}
+			return;
+		}
+	}
+
 
 	// Update is called once per frame
 	void Update () {
+		if (death > 0) {
+			return;
+		}
 		if (found) {
 			{
 				Vector3 destination = trump.position + offset;
@@ -31,7 +65,7 @@ public class Follower : MonoBehaviour {
 					rigidBody.AddRelativeForce (attract * Time.deltaTime * followSpeed);
 				} else if (distance < trumpTooClose) {
 					Vector3 repel = this.transform.position - trump.position;
-					rigidBody.AddRelativeForce (repel * Time.deltaTime * followSpeed*3);
+					rigidBody.AddRelativeForce (repel * Time.deltaTime * followSpeed*5);
 				} else {
 					offset = Random.insideUnitCircle * Vector3.Distance (trump.position, this.transform.position);;
 				}

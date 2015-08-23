@@ -9,6 +9,9 @@ public class HeroControl : MonoBehaviour, IGoal {
 	Rigidbody2D rigidBody;
 	private Vector3 _destination = default(Vector3);
 	public bool simpleControls;
+	public int death = 0;
+	private Vector2 orgPosition;
+	public int born = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -17,10 +20,48 @@ public class HeroControl : MonoBehaviour, IGoal {
 		if (simpleControls) {
 			rigidBody.freezeRotation = true;
 		}
+		orgPosition = rigidBody.position;
+		born = 100;
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (this.death>0 || born>0) {
+			return;
+		}
+		if (other.tag == "Bullet") {
+			this.death = 300;
+			Destroy (other);
+		}
+		Debug.Log (other);
+		//		Destroy(gameObject);
+	}
+
+
+
+	void FixedUpdate() {
+		if (born > 0) {
+			born--;
+			return;
+		}
+		if (death > 0) {
+			Debug.Log (death);
+			this.GetComponent<Renderer>().enabled = false;
+			death--;
+			if (death == 0) {
+				this.GetComponent<Renderer>().enabled = true;
+				rigidBody.MovePosition(orgPosition);
+				born = 100;
+			}
+			return;
+		}
 	}
 
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (death + ", " + born);
+		if (death > 0) {
+			return;
+		}
 		if (simpleControls) {
 			moveDirection.Set (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 		} else {

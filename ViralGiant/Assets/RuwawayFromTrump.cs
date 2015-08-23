@@ -9,15 +9,48 @@ public class RuwawayFromTrump : MonoBehaviour {
 	Rigidbody2D rigidBody;
 	Vector2 randomMovement;
 	bool scared = false;
+	public int death = 0;
+	private Vector2 orgPosition;
+
 
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		trump = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
+		orgPosition = rigidBody.position;
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (this.death>0) {
+			return;
+		}
+		if (other.tag == "Player" || other.tag == "Follower") {
+			this.death = 300;
+		}
+		Debug.Log (other);
+		//		Destroy(gameObject);
+	}
+
+
+	void FixedUpdate() {
+		if (death > 0) {
+			Debug.Log (death);
+			this.GetComponent<Renderer>().enabled = false;
+			death--;
+			if (death == 0) {
+				this.GetComponent<Renderer>().enabled = true;
+				rigidBody.MovePosition(orgPosition);
+			}
+			return;
+		}
+	}
+
 
 	// Update is called once per frame
 	void Update () {
+		if (death > 0) {
+			return;
+		}
 		float distance = Vector3.Distance (trump.position, this.transform.position);
 		if (distance < sightDistance) {
 			Vector3 repel = this.transform.position - trump.position;

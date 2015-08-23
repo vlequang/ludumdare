@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour {
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		rigidBody.AddForce(direction * speed * Time.deltaTime * 20);
@@ -28,16 +28,21 @@ public class Projectile : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
-	
-	void OnTriggerEnter2D(Collider2D other) {
+
+/*	void OnTriggerEnter2D(Collider2D other) {
 		if (parentCannonCollider && other == parentCannonCollider) {
 			return;
 		}
 		if (other.tag == "Player") {
+			other.GetComponent<HeroControl>().death = 300;
 			Debug.Log ("Shot!");
+		}
+		if (other.tag == "Follower") {
+			other.GetComponent<HeroControl>().death = 300;
+			Debug.Log ("Shot follower!");
 		}
 		Debug.Log (other);
 		Destroy(gameObject);
-	}
+	}*/
 
 }
