@@ -18,7 +18,7 @@ public class RuwawayFromTrump : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
-		trump = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
+		trump = GameObject.FindGameObjectWithTag ("Virus").GetComponent<Transform>();
 		orgPosition = rigidBody.position;
 		firedAudio = GetComponents<AudioSource> ()[0];
 		loserAudio = GetComponents<AudioSource> () [1];

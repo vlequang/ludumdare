@@ -14,7 +14,7 @@ public class Follower : MonoBehaviour {
 	private Vector2 orgPosition;
 
 	void Start() {
-		trump = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform>();
+		trump = GameObject.FindGameObjectWithTag ("Virus").GetComponent<Transform>();
 		rigidBody = GetComponent<Rigidbody2D> ();
 		trumpTooFar += Random.Range (-.5f, .5f);
 		trumpTooClose += Random.Range (-.5f, .5f);
