@@ -25,7 +25,12 @@ public class HeroControl : MonoBehaviour, IGoal {
 		born = 100;
 
 		animator = GetComponent<Animator>();
+		birth ();
 	}
+
+	void birth() {
+		GetComponents<AudioSource>()[1].Play();
+    }
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (this.death>0 || born>0) {
@@ -43,7 +48,7 @@ public class HeroControl : MonoBehaviour, IGoal {
 			}
 
 			GetComponent<Explosion>().Explode();
-			GetComponent<AudioSource>().Play();
+			GetComponents<AudioSource>()[0].Play();
 		}
 		//Debug.Log (other);
 		//		Destroy(gameObject);
@@ -64,6 +69,7 @@ public class HeroControl : MonoBehaviour, IGoal {
 				this.GetComponent<Renderer>().enabled = true;
 //				rigidBody.MovePosition(orgPosition);
 				born = 100;
+				birth();
 			}
 			return;
 		}
@@ -84,6 +90,7 @@ public class HeroControl : MonoBehaviour, IGoal {
         moveDirection = transform.TransformDirection(moveDirection);
 		moveDirection *= speed;
 
+
 		//rigidBody.isKinematic = false;
 		rigidBody.AddForce(moveDirection * Time.deltaTime * 500.0f);
 		//rigidBody.isKinematic = true;
@@ -94,6 +101,10 @@ public class HeroControl : MonoBehaviour, IGoal {
 			} else if (animator.GetBool("Swimming") && Input.GetAxis ("Vertical") == 0) {
 				animator.SetBool("Swimming", false);
 			}
+		}
+
+		if (Input.GetKeyDown ("space")) {
+
 		}
 	}
 
