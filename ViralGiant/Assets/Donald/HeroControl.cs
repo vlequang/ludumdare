@@ -89,9 +89,9 @@ public class HeroControl : MonoBehaviour, IGoal {
 		//rigidBody.isKinematic = true;
 
 		if (animator) {
-			if (animator.GetBool("Swimming") == false && (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0)) {
+			if (animator.GetBool("Swimming") == false && (Input.GetAxis ("Vertical") != 0)) {
 				animator.SetBool("Swimming", true);
-			} else if (animator.GetBool("Swimming") && Input.GetAxis ("Horizontal") == 0 && Input.GetAxis ("Vertical") == 0) {
+			} else if (animator.GetBool("Swimming") && Input.GetAxis ("Vertical") == 0) {
 				animator.SetBool("Swimming", false);
 			}
 		}
