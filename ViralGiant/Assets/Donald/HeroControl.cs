@@ -19,7 +19,7 @@ public class HeroControl : MonoBehaviour, IGoal {
 		moveDirection = new Vector3();
 		rigidBody = GetComponent<Rigidbody2D> ();
 		if (simpleControls) {
-			rigidBody.freezeRotation = true;
+			//rigidBody.freezeRotation = true;
 		}
 		orgPosition = rigidBody.position;
 		born = 100;
@@ -84,7 +84,9 @@ public class HeroControl : MonoBehaviour, IGoal {
         moveDirection = transform.TransformDirection(moveDirection);
 		moveDirection *= speed;
 
+		//rigidBody.isKinematic = false;
 		rigidBody.AddForce(moveDirection * Time.deltaTime * 500.0f);
+		//rigidBody.isKinematic = true;
 
 		if (animator) {
 			if (animator.GetBool("Swimming") == false && (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0)) {
