@@ -30,20 +30,20 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-/*	void OnTriggerEnter2D(Collider2D other) {
+	void OnTriggerEnter2D(Collider2D other) {
 		if (parentCannonCollider && other == parentCannonCollider) {
 			return;
 		}
-		if (other.tag == "Player") {
-			other.GetComponent<HeroControl>().death = 300;
-			Debug.Log ("Shot!");
-		}
-		if (other.tag == "Follower") {
-			other.GetComponent<HeroControl>().death = 300;
-			Debug.Log ("Shot follower!");
-		}
-		Debug.Log (other);
+//		if (other.tag == "Player") {
+//			other.GetComponent<HeroControl>().death = 300;
+//			Debug.Log ("Shot!");
+//		}
+//		if (other.tag == "Follower") {
+//			other.GetComponent<HeroControl>().death = 300;
+//			Debug.Log ("Shot follower!");
+//		}
+//		Debug.Log (other);
 		Destroy(gameObject);
-	}*/
+	}
 
 }
