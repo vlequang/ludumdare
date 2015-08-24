@@ -103,10 +103,13 @@ public class HeroControl : MonoBehaviour, IGoal {
 			}
 		}
 
-		if (Input.GetKeyDown ("space")) {
-
-		}
+		if (Input.GetKeyDown ("space") && Time.frameCount > lastTrigger + 10) {
+			lastTrigger = Time.frameCount;
+			GetComponents<AudioSource>()[2].Play();
+        }
 	}
+
+	static int lastTrigger = 0;
 
 	public Vector3 destination {
 		get {
