@@ -9,13 +9,13 @@ public class Cannon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine ("shoot");
 		player = GameObject.FindGameObjectWithTag ("Virus");
+		StartCoroutine ("shoot");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	IEnumerator shoot() {
@@ -31,4 +31,15 @@ public class Cannon : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.tag == "Virus" || other.tag=="Follower") {
+			this.GetComponent<Explosion>().Explode();
+			DestroyObject(this.gameObject);
+        }
+        //Debug.Log (other);
+        //		Destroy(gameObject);
+    }
+
+
 }
