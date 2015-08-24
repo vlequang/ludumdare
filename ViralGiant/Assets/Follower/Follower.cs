@@ -86,7 +86,7 @@ public class Follower : MonoBehaviour {
                 }
             }
 
-			rigidBody.AddForce (Random.insideUnitCircle * 100);
+			rigidBody.AddForce (Random.insideUnitCircle * 10);
 		} else {
 			float distance = Vector3.Distance (trump.position, this.transform.position);
 			if (distance < 10) {
