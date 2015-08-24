@@ -14,6 +14,7 @@ public class RuwawayFromTrump : MonoBehaviour {
 	private AudioSource firedAudio;
 	private AudioSource loserAudio;
 
+	public GameObject followerPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -29,14 +30,16 @@ public class RuwawayFromTrump : MonoBehaviour {
 		if (this.death>0) {
 			return;
 		}
-		if (other.tag == "Player" || other.tag == "Follower") {
+		if (other.tag == "Virus" || other.tag == "Follower") {
 			this.death = 300;
 			this.GetComponent<Explosion>().Explode();
-			if (other.tag == "Player") {
+			if (other.tag == "Virus") {
 				firedAudio.Play();
 			} else {
 				loserAudio.Play ();
 			}
+			Destroy (gameObject);
+			Instantiate (followerPrefab, this.transform.position, Quaternion.identity);
 		}
 //		Debug.Log (other);
 		//		Destroy(gameObject);
