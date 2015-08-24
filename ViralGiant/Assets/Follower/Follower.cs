@@ -12,6 +12,7 @@ public class Follower : MonoBehaviour {
 	public Vector3 offset;
 	public int death = 0;
 	private Vector2 orgPosition;
+	Animator animator;
 
 	void Start() {
 		trump = GameObject.FindGameObjectWithTag ("Virus").GetComponent<Transform>();
@@ -20,6 +21,7 @@ public class Follower : MonoBehaviour {
 		trumpTooClose += Random.Range (-.5f, .5f);
 		followSpeed += Random.Range (-200f, 200f);
 		orgPosition = rigidBody.position;
+		animator = GetComponent<Animator>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -92,6 +94,16 @@ public class Follower : MonoBehaviour {
 				this.GetComponents<AudioSource>()[0].Play ();
 			}
             rigidBody.AddRelativeForce (Random.insideUnitCircle * 30);
+		}
+
+		if (rigidBody.velocity.magnitude > 10) {
+			if (animator.GetBool("Swimming") == false) {
+				animator.SetBool("Swimming", true);
+			}
+		} else {
+			if (animator.GetBool("Swimming") == true) {
+				animator.SetBool("Swimming", false);
+			}
 		}
     }
 }
