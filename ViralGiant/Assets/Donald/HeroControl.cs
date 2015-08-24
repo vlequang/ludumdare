@@ -25,11 +25,11 @@ public class HeroControl : MonoBehaviour, IGoal {
 		born = 100;
 
 		animator = GetComponent<Animator>();
-		birth ();
 	}
 
 	void birth() {
 		GetComponents<AudioSource>()[1].Play();
+		GetComponents<AudioSource> () [3].Play ();
     }
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -49,7 +49,8 @@ public class HeroControl : MonoBehaviour, IGoal {
 
 			GetComponent<Explosion>().Explode();
 			GetComponents<AudioSource>()[0].Play();
-		}
+			GetComponents<AudioSource> () [3].Stop();
+        }
 		//Debug.Log (other);
 		//		Destroy(gameObject);
 	}
