@@ -9,8 +9,8 @@ public class Cannon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine ("shoot");
 		player = GameObject.FindGameObjectWithTag ("Virus");
+		StartCoroutine ("shoot");
 	}
 	
 	// Update is called once per frame
