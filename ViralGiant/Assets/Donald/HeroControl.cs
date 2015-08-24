@@ -49,7 +49,7 @@ public class HeroControl : MonoBehaviour, IGoal {
 
 			GetComponent<Explosion>().Explode();
 			GetComponents<AudioSource>()[0].Play();
-			GetComponents<AudioSource> () [3].Stop();
+			GetComponents<AudioSource> () [3].Pause();
         }
 		//Debug.Log (other);
 		//		Destroy(gameObject);
