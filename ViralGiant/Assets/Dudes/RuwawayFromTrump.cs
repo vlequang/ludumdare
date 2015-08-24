@@ -66,14 +66,17 @@ public class RuwawayFromTrump : MonoBehaviour {
 			return;
 		}
 		float distance = Vector3.Distance (trump.position, this.transform.position);
-		if (distance < sightDistance) {
-			Vector3 repel = this.transform.position - trump.position;
-			repel.Normalize ();
+		Vector3 repel = this.transform.position - trump.position;
+		repel.Normalize ();
+        if (distance < sightDistance) {
 			rigidBody.AddRelativeForce (repel * Time.deltaTime * repelDistance);
 			scared = true;
 //			Debug.Log ("I see trump!");
 		} else if (scared) {
-			if(rigidBody.velocity.magnitude < .01f) {
+            if (distance < sightDistance * 2) {
+				rigidBody.AddRelativeForce (repel * Time.deltaTime * repelDistance);
+			}
+            if(rigidBody.velocity.magnitude < .01f) {
 				scared = false;
             }
         } else {
