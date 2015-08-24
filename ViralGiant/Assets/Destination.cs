@@ -2,9 +2,12 @@
 using System.Collections;
 
 public class Destination : MonoBehaviour {
+	public GameObject Heart;
 
 	void OnTriggerEnter2D(Collider2D other) {
-		Debug.Log ("Reached the end!");
+		if (Heart) {
+			Heart.GetComponent<Animator>().SetTrigger("Win");
+		}
 	}
 
 }
