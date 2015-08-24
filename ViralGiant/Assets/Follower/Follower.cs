@@ -46,6 +46,7 @@ public class Follower : MonoBehaviour {
 			if (death == 0) {
 				this.GetComponent<Renderer>().enabled = true;
 				rigidBody.MovePosition(orgPosition);
+				found = false;
 			}
 			return;
 		}
