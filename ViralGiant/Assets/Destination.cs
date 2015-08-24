@@ -20,7 +20,7 @@ public class Destination : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (Heart) {
+		if (other.tag=="Virus" && Heart != null) {
 			Heart.GetComponent<Animator>().SetTrigger("Win");
 			StartCoroutine ("PlayMovie");
 		}
