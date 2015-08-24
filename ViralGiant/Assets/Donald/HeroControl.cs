@@ -62,7 +62,7 @@ public class HeroControl : MonoBehaviour, IGoal {
 			death--;
 			if (death == 0) {
 				this.GetComponent<Renderer>().enabled = true;
-				rigidBody.MovePosition(orgPosition);
+//				rigidBody.MovePosition(orgPosition);
 				born = 100;
 			}
 			return;
