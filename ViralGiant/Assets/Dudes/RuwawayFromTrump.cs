@@ -27,15 +27,15 @@ public class RuwawayFromTrump : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		Collider2D other = collision.collider;
-		if (this.death>0) {
+		if (this.death>0 || other == null) {
 			return;
 		}
 		if (other.tag == "Virus" || other.tag == "Follower") {
 			this.death = 300;
 			this.GetComponent<Explosion>().Explode();
-			if (other.tag == "Virus") {
+			if (other.tag == "Virus" && firedAudio) {
 				firedAudio.Play();
-			} else {
+			} else if (loserAudio){
 				loserAudio.Play ();
 			}
 			Destroy (gameObject);
