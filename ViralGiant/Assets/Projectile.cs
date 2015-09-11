@@ -8,7 +8,8 @@ public class Projectile : MonoBehaviour {
 	Rigidbody2D rigidBody;
 	public Collider2D parentCannonCollider;
 	public float lifeTime = 10f;
-	private float livedTime = 0.0f;
+	public float initialTime = 0.5f;
+	public float livedTime = 0.0f;
 
 	// Use this for initialization
 	void Start () {

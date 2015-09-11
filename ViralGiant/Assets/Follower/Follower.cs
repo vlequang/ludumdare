@@ -28,7 +28,7 @@ public class Follower : MonoBehaviour {
 		if (this.death>0) {
 			return;
 		}
-		if (other.tag == "Bullet") {
+		if (other.tag == "Bullet" && other.GetComponent<Projectile>().lifeTime > other.GetComponent<Projectile>().initialTime ) {
 			this.death = 300;
 			found = false;
 			this.GetComponent<Explosion>().Explode();

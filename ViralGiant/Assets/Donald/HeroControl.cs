@@ -36,7 +36,7 @@ public class HeroControl : MonoBehaviour, IGoal {
 		if (this.death>0 || born>0) {
 			return;
 		}
-		if (other.tag == "Bullet") {
+		if (other.tag == "Bullet" && other.GetComponent<Projectile>().lifeTime > other.GetComponent<Projectile>().initialTime ) {
 			this.death = 300;
 			Destroy (other);
 
@@ -120,5 +120,4 @@ public class HeroControl : MonoBehaviour, IGoal {
 	public bool AtDestination() {
 		return Vector3.SqrMagnitude (destination - this.transform.position) < 0.001;
 	}
-
 }
